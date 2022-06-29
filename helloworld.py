@@ -5,7 +5,7 @@ import numpy as np
 
 
 def display_col():
-
+    pass
 
 if __name__ == '__main__':
     display_col()
