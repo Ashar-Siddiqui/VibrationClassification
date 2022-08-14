@@ -12,10 +12,10 @@ from sklearn.preprocessing import MinMaxScaler
 
 def main():
     # Load preprocessed data
-    train0 = np.load(join(dirname(__file__), 'data', '0D.npy'))
-    test0 = np.load(join(dirname(__file__), 'data', '0E.npy'))
-    train1 = np.load(join(dirname(__file__), 'data', '4D.npy'))
-    test1 = np.load(join(dirname(__file__), 'data', '4E.npy'))
+    train0 = np.load(join(dirname(__file__), 'data_tsfresh', '0Dtsfresh.npy'))[:,:,0]
+    test0 = np.load(join(dirname(__file__), 'data_tsfresh', '0Etsfresh.npy'))[:,:,0]
+    train1 = np.load(join(dirname(__file__), 'data_tsfresh', '4Dtsfresh.npy'))[:,:,0]
+    test1 = np.load(join(dirname(__file__), 'data_tsfresh', '4Etsfresh.npy'))[:,:,0]
 
     # Assemble data into training and testing splits
     train_features = np.concatenate([train0, train1], axis=0)
@@ -23,6 +23,9 @@ def main():
     test_features = np.concatenate([test0, test1], axis=0)
     test_labels = np.concatenate([np.zeros(test0.shape[0]), np.ones(test1.shape[0])])
     print(f'Training data rows: {train_features.shape[0]}\n')
+
+    '''
+    # These lines of code are not stricly necessary but sometimes helpful
 
     # Shuffle data so that all of the examples with the same label aren't grouped together
     train_features, train_labels = shuffle(train_features, train_labels, random_state=0)
@@ -33,6 +36,7 @@ def main():
     # it is more difficult for some models to learn
     train_features = MinMaxScaler().fit_transform(train_features)
     test_features = MinMaxScaler().fit_transform(test_features)
+    '''
 
     for model in (
         RandomForestClassifier(max_depth=20, min_samples_leaf=1, n_estimators=300, random_state=0, verbose=True),
