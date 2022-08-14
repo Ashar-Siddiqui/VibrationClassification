@@ -53,6 +53,8 @@ def main():
         print(f'Accuracy on Training set: {(predict_train_labels == train_labels).mean():.8f}')
         predict_test_labels = model.predict(test_features)
         print(f'Accuracy on Testing set: {(predict_test_labels == test_labels).mean():.8f}')
+        if isinstance(model, RandomForestClassifier):
+            print(model.feature_importances_)
         print()
 
 if __name__ == '__main__':
