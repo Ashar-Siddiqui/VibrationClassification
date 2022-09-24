@@ -38,24 +38,17 @@ def main():
     test_features = MinMaxScaler().fit_transform(test_features)
     '''
 
-    for model in (
-        RandomForestClassifier(max_depth=20, min_samples_leaf=1, n_estimators=300, random_state=0, verbose=True),
-        GradientBoostingClassifier(random_state=0, n_estimators=10, verbose=True),
-        AdaBoostClassifier(random_state=0, n_estimators=10),
-        MLPClassifier(random_state=0, hidden_layer_sizes=(20,50,50,20), verbose=True),
-        KNeighborsClassifier(n_neighbors=5),
-    ):
-        print('='*40 + f'\nTraining {model.__class__.__name__}...')
-        model.fit(train_features, train_labels)
-        model.verbose = False # turn off the print statements that run when the model is used in any way
+    model = RandomForestClassifier(max_depth=20, min_samples_leaf=1, n_estimators=300, random_state=0, verbose=True)
+    print('='*40 + f'\nTraining {model.__class__.__name__}...')
+    model.fit(train_features, train_labels)
+    model.verbose = False # turn off the print statements that run when the model is used in any way
 
-        predict_train_labels = model.predict(train_features)
-        print(f'Accuracy on Training set: {(predict_train_labels == train_labels).mean():.8f}')
-        predict_test_labels = model.predict(test_features)
-        print(f'Accuracy on Testing set: {(predict_test_labels == test_labels).mean():.8f}')
-        if isinstance(model, RandomForestClassifier):
-            print(model.feature_importances_)
-        print()
+    predict_train_labels = model.predict(train_features)
+    print(f'Accuracy on Training set: {(predict_train_labels == train_labels).mean():.8f}')
+    predict_test_labels = model.predict(test_features)
+    print(f'Accuracy on Testing set: {(predict_test_labels == test_labels).mean():.8f}')
+    print(f'Feature Importances:\n{model.feature_importances_}')
+    print()
 
 if __name__ == '__main__':
     main()
