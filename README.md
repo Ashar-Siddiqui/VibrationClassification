@@ -4,9 +4,17 @@
 
     `https://www.python.org/downloads/`
 
+1) Create a virtual environment
+
+    `python3 -m venv .venv.nosync`
+
+1) Activate the virtual environment
+
+    `source .venv.nosync/bin/activate # if you want to deactivate, then run "deactivate"`
+
 1) On the command line, install the dependencies necessary for this project.
 
-    `python3 -m pip install sklearn`
+    `python3 -m pip install tsfresh`
 
 1) Download the following datasets from `https://www.kaggle.com/datasets/jishnukoliyadan/vibration-analysis-on-rotating-shaft`
 
@@ -25,4 +33,4 @@
 
 	`python3 preprocess.py`
 
-1) Download the TS-fresh feastures from this repo: `https://github.com/deepinsights-analytica/ieee-etfa2020-paper/tree/master/data`
+1) Download the TS-fresh features from this repo: `https://github.com/deepinsights-analytica/ieee-etfa2020-paper/tree/master/data`
