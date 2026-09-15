@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying research manuscript using the preferred citation below."
+title: "Predictive Maintenance — Vibration Classification"
+type: software
+authors:
+  - family-names: Siddiqui
+    given-names: Ashar
+repository-code: "https://github.com/Ashar-Siddiqui/VibrationClassification"
+preferred-citation:
+  type: report
+  title: "How Can a Machine Learning Classification Model Assist in Determining the Magnitude of a Rotating Shaft’s Unbalance?"
+  authors:
+    - family-names: Siddiqui
+      given-names: Ashar
+  url: "https://github.com/Ashar-Siddiqui/VibrationClassification/blob/master/docs/predictive-maintenance-research-paper.pdf"
+  notes: "Author-provided research manuscript. The supplied document does not state a publication date or venue."
